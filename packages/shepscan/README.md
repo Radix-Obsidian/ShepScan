@@ -1,20 +1,37 @@
-# 🛡️ ShepScan
+<div align="center">
+  <br />
+  <img src="https://raw.githubusercontent.com/Radix-Obsidian/ShepScan/main/logo.svg" alt="ShepScan" width="120" height="120" />
+  <h1>ShepScan</h1>
+  <p><strong>AI-Native Secret Detection CLI</strong></p>
+  <p>Stop secrets from leaking before they hit production</p>
 
-**AI-native secret detection CLI for scanning repositories**
+  [![npm version](https://img.shields.io/npm/v/@goldensheepai/shepscan.svg?style=flat-square)](https://www.npmjs.com/package/@goldensheepai/shepscan)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+  [![Downloads](https://img.shields.io/npm/dm/@goldensheepai/shepscan.svg?style=flat-square)](https://www.npmjs.com/package/@goldensheepai/shepscan)
+  [![GitHub Stars](https://img.shields.io/github/stars/Radix-Obsidian/ShepScan?style=flat-square)](https://github.com/Radix-Obsidian/ShepScan)
 
-[![npm version](https://img.shields.io/npm/v/shepscan.svg)](https://www.npmjs.com/package/shepscan)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [Quick Start](#-quick-start) • [Features](#-features) • [Documentation](https://github.com/Radix-Obsidian/ShepScan#readme) • [GitHub](https://github.com/Radix-Obsidian/ShepScan)
+  
+  <br />
+</div>
 
-Scan your code for leaked secrets before they reach production. ShepScan detects 13+ secret types including AWS keys, Stripe tokens, database URLs, and more.
+---
 
-## Installation
+## 🎯 Why ShepScan?
+
+**$4.45 million** — the average cost of a data breach in 2023. Many start with a single leaked API key.
+
+ShepScan catches secrets **before** they reach your repository. Built for developers who ship fast and need security that doesn't slow them down.
+
+## ⚡ Quick Start
 
 ```bash
-# Global installation
-npm install -g shepscan
+# Run instantly with npx (no install needed)
+npx @goldensheepai/shepscan scan ./your-project
 
-# Or use with npx
-npx shepscan
+# Or install globally
+npm install -g @goldensheepai/shepscan
+shepscan scan ./your-project
 ```
 
 ## Usage
@@ -65,28 +82,53 @@ shepscan repo https://github.com/streaak/keyhacks
 shepscan patterns
 ```
 
-## Detected Secret Types
+## ✨ Features
 
-| Type | Severity |
-|------|----------|
-| AWS Access Key ID | Critical |
-| AWS Secret Access Key | Critical |
-| GitHub Token | Critical |
-| Stripe Secret Key | Critical |
-| Database Connection String | Critical |
-| Private Keys | Critical |
-| Google API Key | High |
-| Slack Token | High |
-| Discord Token | High |
-| OpenAI API Key | High |
-| JWT Secret | High |
-| Generic API Key | Medium |
-| Generic Secret/Password | Medium |
+### 13+ Secret Patterns Detected
 
-## Programmatic Usage
+<table>
+<tr>
+<td>
+
+**Critical**
+- AWS Keys
+- GitHub Tokens
+- Stripe Keys
+- Database URLs
+- Private Keys (RSA, SSH)
+
+</td>
+<td>
+
+**High**
+- Google API Keys
+- Slack Tokens
+- Discord Tokens
+- OpenAI Keys
+- JWT Secrets
+
+</td>
+<td>
+
+**Medium**
+- Generic API Keys
+- Passwords
+- Environment Secrets
+
+</td>
+</tr>
+</table>
+
+### Smart Detection
+- **Zero Config** — Works out of the box
+- **Fast Scanning** — Processes thousands of files per second
+- **Low False Positives** — Filters test/example patterns
+- **Exit Codes** — Perfect for CI/CD pipelines
+
+## 🔧 Programmatic Usage
 
 ```typescript
-import { scanDirectory, scanSingleFile } from 'shepscan';
+import { scanDirectory, scanSingleFile } from '@goldensheepai/shepscan';
 
 // Scan a directory
 const result = scanDirectory('./my-project');
@@ -113,14 +155,34 @@ Use in CI/CD:
 shepscan scan . || echo "Secrets detected!"
 ```
 
-## Contributing
+---
+
+## 🤝 Contributing
+
+We welcome contributions! ShepScan is **open source** and community-driven.
+
+- 🐛 [Report bugs](https://github.com/Radix-Obsidian/ShepScan/issues)
+- 💡 [Request features](https://github.com/Radix-Obsidian/ShepScan/discussions)
+- 🔀 [Submit PRs](https://github.com/Radix-Obsidian/ShepScan/pulls)
 
 See [CONTRIBUTING.md](https://github.com/Radix-Obsidian/ShepScan/blob/main/CONTRIBUTING.md) for guidelines.
 
-## License
+---
 
-MIT © [Golden Sheep AI](https://github.com/Radix-Obsidian)
+## 📄 License
+
+MIT License © [Golden Sheep AI](https://github.com/Radix-Obsidian)
 
 ---
 
-**Part of [ShepScan](https://github.com/Radix-Obsidian/ShepScan)** — AI-native secret detection platform
+<div align="center">
+  <br />
+  <p><strong>Part of the ShepScan Platform</strong></p>
+  <p>
+    <a href="https://github.com/Radix-Obsidian/ShepScan">Full Platform</a> •
+    <a href="https://github.com/Radix-Obsidian/ShepScan#readme">Documentation</a> •
+    <a href="https://github.com/Radix-Obsidian/ShepScan/discussions">Community</a>
+  </p>
+  <p><sub>Made with 🤍 by developers, for developers</sub></p>
+  <br />
+</div>

@@ -1,6 +1,6 @@
 {
   "name": "@goldensheepai/shepscan",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AI-native secret detection CLI for scanning repositories",
   "author": "Golden Sheep AI <contact@goldensheep.ai>",
   "license": "MIT",
