@@ -1,0 +1,59 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  authProvider String   @map("auth_provider")
+  createdAt    DateTime @default(now()) @map("created_at")
+  repos        Repo[]
+  alerts       Alert[]
+
+  @@map("users")
+}
+
+model Repo {
+  id        String   @id @default(uuid())
+  provider  String
+  name      String
+  url       String
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+  secrets   Secret[]
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("repos")
+}
+
+model Secret {
+  id            String   @id @default(uuid())
+  repoId        String   @map("repo_id")
+  repo          Repo     @relation(fields: [repoId], references: [id])
+  filePath      String   @map("file_path")
+  lineNumber    Int      @map("line_number")
+  secretType    String   @map("secret_type")
+  severity      String
+  aiExplanation String?  @map("ai_explanation")
+  createdAt     DateTime @default(now()) @map("created_at")
+  alerts        Alert[]
+
+  @@map("secrets")
+}
+
+model Alert {
+  id              String   @id @default(uuid())
+  userId          String   @map("user_id")
+  user            User     @relation(fields: [userId], references: [id])
+  secretId        String   @map("secret_id")
+  secret          Secret   @relation(fields: [secretId], references: [id])
+  deliveryChannel String   @map("delivery_channel")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("alerts")
+}

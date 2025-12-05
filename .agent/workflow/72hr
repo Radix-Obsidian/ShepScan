@@ -1,0 +1,29 @@
+Day 1 (Dec 5) - Core Scan Slice 
+- Secret Detection Engine: 13 regex patterns (AWS, Stripe, JWT, DB, GitHub, Slack, etc.)
+- Manual Repo Scan: Paste GitHub URL → clone → scan → results
+- Results Display: File path, line number, secret type, severity, redacted snippets
+- API: POST /scan, GET /scan/quick, GET /scan/health
+- Frontend: Real dashboard wired to API, scan history, severity badges
+- Tested: github-dorks (2 secrets), keyhacks (9 secrets including critical AWS keys)
+
+Day 2 (Dec 6) - Intelligence Slice 
+- AI Classification: OpenAI/Anthropic integration with smart fallback mode
+- "Explain This Secret": Founder-friendly explanations with risk, impact, remediation steps
+- Severity Heat Map: Visual bar chart showing distribution by severity level
+- API: POST /ai/analyze, POST /ai/classify, POST /ai/explain, GET /ai/status
+- Frontend: Expandable secret cards with AI analysis, real/false-positive badges
+- Supports: Both OpenAI (gpt-4o-mini) and Anthropic (claude-3.5-sonnet) with auto-detection
+
+Day 3 (Dec 7) - Polish & Connect Slice 
+- GitHub OAuth: Full Passport.js integration with GitHub strategy
+- JWT Authentication: Secure token-based sessions with 7-day expiry
+- Connected repos list: Shows previously scanned repos per user from DB
+- Auth endpoints: GET /auth/github, /auth/github/callback, /auth/me, /auth/repos, /auth/status
+- Frontend: Login/logout flow, token persistence in localStorage, user display
+- Guards: JwtAuthGuard and GitHubAuthGuard for protected routes
+
+=== 72-HOUR MVP COMPLETE ===
+All 3 days delivered ahead of schedule (Dec 5)
+- Day 1: Secret Detection Engine (13 patterns, GitHub clone, scan, results)
+- Day 2: AI Intelligence (Classification, Founder Explanations, Heat Map)
+- Day 3: GitHub OAuth + Connected Repos
