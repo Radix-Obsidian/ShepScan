@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="apps/web/public/logo.png" alt="ShepScan Logo" width="120" height="120" />
+  <img src="logo.svg" alt="ShepScan Logo" width="120" height="120" />
   
   # ShepScan
   
